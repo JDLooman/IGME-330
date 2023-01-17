@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Greeter</title>
+    <style>
+      *{font-size:1.5em;}
+    </style>    
+  </head>
+<body>
+  <button>Click Me!</button>
+  <input id="input-firstname" placeholder="Type in your name">
+  <p id="output">???</p>
+
+  <script>
+    "use strict";
+
+    //Sloppy Mode
+    //let a = 10;
+    //console.log(a);
+
+    function add(num1, num2){
+      return num1 + num2;
+    }
+
+    //Why we don't use var
+    function doStuff(){
+      let a = 10;
+      //console.log("logging start", a, i);
+      if(true){
+        if(true){
+          if(true){
+            for(let i = 0; i < 10; i++){
+              a = 20;
+            }
+          }
+        }
+      }
+      console.log("logging end", a);
+    }
+
+    doStuff();
+  
+  // 1 - get a reference to the button  
+  // 2 - add a click event to button that calls a `sayHello` function
+  // 3 - create a `sayHello()` function
+  // 3A - get name of person from the <input>
+  // 3B - get a reference to the #output <p>
+  // 3C - update HTML of #output <p>
+
+  init();
+  function sayHello(){
+    console.log("Hello!");
+  }
+  function init(){
+    const button = document.querySelector("button");
+    button.addEventListener("click", sayHello);
+    //button.onclick = sayHello;
+  }
+  
+  </script>
+</body>
+</html>
