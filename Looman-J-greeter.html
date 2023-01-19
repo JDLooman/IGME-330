@@ -3,61 +3,101 @@
   <head>
     <meta charset="utf-8" />
     <title>Greeter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
       *{font-size:1.5em;}
+      button{
+        width: 150px;
+        height: 50px;
+        font-size: 14pt;
+      }
+      p{
+        font-family: 'Share Tech Mono', monospace;
+      }
+      @media only screen and (min-width: 1024px){
+				body{
+					background-color: red;
+					padding: 100px;
+				}
+      }
     </style>    
-  </head>
+    <script>
+      "use strict";  
+      window.onload = function(){
+        init();        
+      }
+
+      let value;
+      //hello button code
+      function sayHello(){     
+          let firstNameId = document.getElementById("input-firstname");     
+          let lastNameId = document.getElementById("input-lastname");  
+          value = firstNameId.value.trim() + " " + lastNameId.value.trim();
+          if(value == " "){//we dont have anything in the fields
+            output.innerHTML = "Hello Peter Parker";
+          }
+          else if(firstNameId.value.trim() == ""){//we only have a last name
+            output.innerHTML = "Hello Peter " + lastNameId.value.trim();
+          }
+          else if(lastNameId.value.trim() == ""){//we only have a firts name
+            output.innerHTML = "Hello " + firstNameId.value.trim() + " Parker";
+          }
+          else{//both fields are filled
+            output.innerHTML = "Hello " + value;
+          }
+          
+        }
+
+        //goodbye button code
+        function sayGoodbye(){     
+          let firstNameId = document.getElementById("input-firstname");     
+          let lastNameId = document.getElementById("input-lastname");  
+          value = firstNameId.value.trim() + " " + lastNameId.value.trim();
+          if(value == " "){//we dont have anything in the fields
+            output.innerHTML = "Goodbye Peter Parker";
+          }
+          else if(firstNameId.value.trim() == ""){//we only have a last name
+            output.innerHTML = "Goodbye Peter " + lastNameId.value.trim();
+          }
+          else if(lastNameId.value.trim() == ""){//we only have a firts name
+            output.innerHTML = "Goodbye " + firstNameId.value.trim() + " Parker";
+          }
+          else{//both fields are filled
+            output.innerHTML = "Goodbye " + value;
+          }
+          
+        }
+        function init(){
+          //hello
+          const helloButton = document.getElementById("hello");
+          helloButton.addEventListener("click", sayHello);
+          //goodbye
+          const goodbyeButton = document.getElementById("goodbye");
+          goodbyeButton.addEventListener("click", sayGoodbye);
+
+          const output = document.querySelector("#output");
+          output.style.color = "black";
+          output.style.backgroundcolor = "yellow";
+        }
+      // 1 - get a reference to the button  
+      // 2 - add a click event to button that calls a `sayHello` function
+      // 3 - create a `sayHello()` function
+      // 3A - get name of person from the <input>
+      // 3B - get a reference to the #output <p>
+      // 3C - update HTML of #output <p>     
+      
+     </script>
+  </head> 
+
 <body>
-  <button>Click Me!</button>
-  <input id="input-firstname" placeholder="Type in your name">
+  
+  <button id="hello">Say Hello!</button>
+  <button id="goodbye">Say Goodbye!</button> 
+  <input id="input-firstname" placeholder="Type in your first name">
+  <input id="input-lastname" placeholder="Type in your last name"> 
   <p id="output">???</p>
 
-  <script>
-    "use strict";
-
-    //Sloppy Mode
-    //let a = 10;
-    //console.log(a);
-
-    function add(num1, num2){
-      return num1 + num2;
-    }
-
-    //Why we don't use var
-    function doStuff(){
-      let a = 10;
-      //console.log("logging start", a, i);
-      if(true){
-        if(true){
-          if(true){
-            for(let i = 0; i < 10; i++){
-              a = 20;
-            }
-          }
-        }
-      }
-      console.log("logging end", a);
-    }
-
-    doStuff();
-  
-  // 1 - get a reference to the button  
-  // 2 - add a click event to button that calls a `sayHello` function
-  // 3 - create a `sayHello()` function
-  // 3A - get name of person from the <input>
-  // 3B - get a reference to the #output <p>
-  // 3C - update HTML of #output <p>
-
-  init();
-  function sayHello(){
-    console.log("Hello!");
-  }
-  function init(){
-    const button = document.querySelector("button");
-    button.addEventListener("click", sayHello);
-    //button.onclick = sayHello;
-  }
-  
-  </script>
 </body>
 </html>
