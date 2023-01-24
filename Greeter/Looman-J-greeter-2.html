@@ -32,56 +32,66 @@
 
       let value;
       //hello button code
-      function sayHello(){     
-          let firstNameId = document.getElementById("input-firstname");     
-          let lastNameId = document.getElementById("input-lastname");  
-          value = firstNameId.value.trim() + " " + lastNameId.value.trim();
-          if(value == " "){//we dont have anything in the fields
-            output.innerHTML = "Hello Peter Parker";
-          }
-          else if(firstNameId.value.trim() == ""){//we only have a last name
-            output.innerHTML = "Hello Peter " + lastNameId.value.trim();
-          }
-          else if(lastNameId.value.trim() == ""){//we only have a firts name
-            output.innerHTML = "Hello " + firstNameId.value.trim() + " Parker";
-          }
-          else{//both fields are filled
-            output.innerHTML = "Hello " + value;
-          }
-          
-        }
+      // function sayHello(){     
+      //   let firstNameId = document.getElementById("input-firstname");     
+      //   let lastNameId = document.getElementById("input-lastname");  
+      //   value = firstNameId.value.trim() + " " + lastNameId.value.trim();
+      //   if(value == " "){//we dont have anything in the fields
+      //     output.innerHTML = "Hello Peter Parker";
+      //   }
+      //   else if(firstNameId.value.trim() == ""){//we only have a last name
+      //     output.innerHTML = "Hello Peter " + lastNameId.value.trim();
+      //   }
+      //   else if(lastNameId.value.trim() == ""){//we only have a firts name
+      //     output.innerHTML = "Hello " + firstNameId.value.trim() + " Parker";
+      //   }
+      //   else{//both fields are filled
+      //     output.innerHTML = "Hello " + value;
+      //   }
+      // }
 
-        //goodbye button code
-        function sayGoodbye(){     
-          let firstNameId = document.getElementById("input-firstname");     
-          let lastNameId = document.getElementById("input-lastname");  
-          value = firstNameId.value.trim() + " " + lastNameId.value.trim();
-          if(value == " "){//we dont have anything in the fields
-            output.innerHTML = "Goodbye Peter Parker";
-          }
-          else if(firstNameId.value.trim() == ""){//we only have a last name
-            output.innerHTML = "Goodbye Peter " + lastNameId.value.trim();
-          }
-          else if(lastNameId.value.trim() == ""){//we only have a firts name
-            output.innerHTML = "Goodbye " + firstNameId.value.trim() + " Parker";
-          }
-          else{//both fields are filled
-            output.innerHTML = "Goodbye " + value;
-          }
-          
-        }
-        function init(){
-          //hello
-          const helloButton = document.getElementById("hello");
-          helloButton.addEventListener("click", sayHello);
-          //goodbye
-          const goodbyeButton = document.getElementById("goodbye");
-          goodbyeButton.addEventListener("click", sayGoodbye);
+      // //goodbye button code
+      // function sayGoodbye(){     
+      //   let firstNameId = document.getElementById("input-firstname");     
+      //   let lastNameId = document.getElementById("input-lastname");  
+      //   value = firstNameId.value.trim() + " " + lastNameId.value.trim();
+      //   if(value == " "){//we dont have anything in the fields
+      //     output.innerHTML = "Goodbye Peter Parker";
+      //   }
+      //   else if(firstNameId.value.trim() == ""){//we only have a last name
+      //     output.innerHTML = "Goodbye Peter " + lastNameId.value.trim();
+      //   }
+      //   else if(lastNameId.value.trim() == ""){//we only have a firts name
+      //     output.innerHTML = "Goodbye " + firstNameId.value.trim() + " Parker";
+      //   }
+      //   else{//both fields are filled
+      //     output.innerHTML = "Goodbye " + value;
+      //   }          
+      // }
 
-          const output = document.querySelector("#output");
-          output.style.color = "black";
-          output.style.backgroundcolor = "yellow";
+      function greet(greeting){
+        let firstNameId = document.getElementById("input-firstname");     
+        let lastNameId = document.getElementById("input-lastname");  
+        value = firstNameId.value.trim() + " " + lastNameId.value.trim();
+
+        //need to add default names here <----------------------
+
+        output.innerHTML = `${greeting} ${value}`;
+      }
+      function init(){
+        //hello
+        const helloButton = document.getElementById("hello");
+        helloButton.onclick = function(){
+          greet("Hello there");
         }
+        //goodbye
+        // const goodbyeButton = document.getElementById("goodbye");
+        // goodbyeButton.addEventListener("click", sayGoodbye);
+
+        const output = document.querySelector("#output");
+        output.style.color = "black";
+        output.style.backgroundcolor = "yellow";
+      }
       // 1 - get a reference to the button  
       // 2 - add a click event to button that calls a `sayHello` function
       // 3 - create a `sayHello()` function
