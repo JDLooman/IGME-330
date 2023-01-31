@@ -31,55 +31,81 @@
       }
 
       let value;
-      let shouting = false;
+      //hello button code
+      // function sayHello(){     
+      //   let firstNameId = document.getElementById("input-firstname");     
+      //   let lastNameId = document.getElementById("input-lastname");  
+      //   value = firstNameId.value.trim() + " " + lastNameId.value.trim();
+      //   if(value == " "){//we dont have anything in the fields
+      //     output.innerHTML = "Hello Peter Parker";
+      //   }
+      //   else if(firstNameId.value.trim() == ""){//we only have a last name
+      //     output.innerHTML = "Hello Peter " + lastNameId.value.trim();
+      //   }
+      //   else if(lastNameId.value.trim() == ""){//we only have a firts name
+      //     output.innerHTML = "Hello " + firstNameId.value.trim() + " Parker";
+      //   }
+      //   else{//both fields are filled
+      //     output.innerHTML = "Hello " + value;
+      //   }
+      // }
 
-      const greet = greeting => {
-        let firstNameId = document.querySelector("#input-firstname").value.trim();     
-        let lastNameId = document.querySelector("#input-lastname").value.trim(); 
-        if(shouting === true){
-          firstNameId = document.querySelector("#input-firstname").value.trim().toUpperCase();     
-          lastNameId = document.querySelector("#input-lastname").value.trim().toUpperCase(); 
-        } 
-        value = firstNameId + " " + lastNameId;
-        
-        if(firstNameId == "") {value = "Peter " + lastNameId;}
-        if(lastNameId == "") {value = firstNameId + " Parker";}
-        if(lastNameId == "" && firstNameId == "") {value = "Peter Parker";}
-        
+      // //goodbye button code
+      // function sayGoodbye(){     
+      //   let firstNameId = document.getElementById("input-firstname");     
+      //   let lastNameId = document.getElementById("input-lastname");  
+      //   value = firstNameId.value.trim() + " " + lastNameId.value.trim();
+      //   if(value == " "){//we dont have anything in the fields
+      //     output.innerHTML = "Goodbye Peter Parker";
+      //   }
+      //   else if(firstNameId.value.trim() == ""){//we only have a last name
+      //     output.innerHTML = "Goodbye Peter " + lastNameId.value.trim();
+      //   }
+      //   else if(lastNameId.value.trim() == ""){//we only have a firts name
+      //     output.innerHTML = "Goodbye " + firstNameId.value.trim() + " Parker";
+      //   }
+      //   else{//both fields are filled
+      //     output.innerHTML = "Goodbye " + value;
+      //   }          
+      // }
+
+      function greet(greeting){
+        let firstNameId = document.getElementById("input-firstname");     
+        let lastNameId = document.getElementById("input-lastname");  
+        value = firstNameId.value.trim() + " " + lastNameId.value.trim();
+
+        //need to add default names here <----------------------
+        //LOOK AT THE CODING STANDARDS FOR THIS CLASS <-------------------------
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
         output.innerHTML = `${greeting} ${value}`;
       }
-
-      const init = init =>{
+      function init(){
         //hello
-        const btnHello = document.querySelector("#hello");
-        btnHello.onclick = helloFunc;
+        const helloButton = document.getElementById("hello");
+        helloButton.onclick = function(){
+          greet("Hello there");
+        }
         //goodbye
-        const btnGoodbye = document.querySelector("#goodbye");
-        btnGoodbye.onclick = goodbyeFunc;
-        //Shoutify
-        const btnShout = document.querySelector("#shout");
-        btnShout.onclick = shoutFunc;
+        // const goodbyeButton = document.getElementById("goodbye");
+        // goodbyeButton.addEventListener("click", sayGoodbye);
 
         const output = document.querySelector("#output");
         output.style.color = "black";
         output.style.backgroundcolor = "yellow";
-      }    
+      }
+      // 1 - get a reference to the button  
+      // 2 - add a click event to button that calls a `sayHello` function
+      // 3 - create a `sayHello()` function
+      // 3A - get name of person from the <input>
+      // 3B - get a reference to the #output <p>
+      // 3C - update HTML of #output <p>     
       
-      const shoutFunc = shoutFunc =>{
-        if(shout.checked == true){shouting = true;}
-        if(shout.checked == false){shouting = false;}
-      }
-      const goodbyeFunc = goodbyeFunc =>{
-        greet("Goodbye");
-      }
-      const helloFunc = helloFunc =>{
-        greet("Hello there");
-      }
      </script>
   </head> 
 
 <body>
-  <input type="checkbox" id="shout">
+  
   <button id="hello">Say Hello!</button>
   <button id="goodbye">Say Goodbye!</button> 
   <input id="input-firstname" placeholder="Type in your first name">
