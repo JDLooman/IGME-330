@@ -15,7 +15,7 @@ const descending = () => 0; // TODO
 const calcMean = () => 0 // TODO
 
 // 4 "public" functions that should be visible from the outside
-const sortAscending = (array) => {
+export const sortAscending = (array) => {
   return array.sort(ascending);
 };
 
@@ -29,7 +29,7 @@ const  calculateMean = (array) => {
 
 // https://stackoverflow.com/questions/18082/validate-decimal-numbers-in-javascript-isnumeric
 // https://github.com/angular/angular/blob/4.3.x/packages/common/src/pipes/number_pipe.ts#L172
-const isNumeric = (value) => {
+export const isNumeric = (value) => {
   return !isNaN(value - parseFloat(value));
 }
 
@@ -37,4 +37,5 @@ const isNumeric = (value) => {
 // Only these 2 functions are visible from the outside of this module aka "public"
 // All the other variables and functions of this module a "private" and
 // not visible from the outside
-export {sortAscending,isNumeric};
+
+//export {sortAscending,isNumeric};

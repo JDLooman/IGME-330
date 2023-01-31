@@ -1,6 +1,7 @@
 //"use strict"; NOT NEEDED! Modules run in strict mode by default
 
-import { sortAscending, isNumeric } from "./utils.js";
+// import { sortAscending, isNumeric } from "./utils.js";
+import * as utils from "./utils.js";
 
 // For keeping track of number of times each func is called
 // this should be "private" to the file
@@ -18,7 +19,7 @@ let btnSortAsc = document.querySelector("#btn-sort-ascending");
 const getDataFromField = () => {
   // split string into an array, and make the values numeric
   let values = inputField.value.trim().split(" ").map(n => +n);
-  values = values.filter(n => isNumeric(n));
+  values = values.filter(n => utils.isNumeric(n));
   return values;
 };
 
@@ -31,7 +32,7 @@ const init = () => {
   btnSortAsc.onclick = function(){
     let values = getDataFromField();
     if(values.length){
-      values = sortAscending(values);
+      values = utils.sortAscending(values);
       output.innerHTML = values;
     }else{
       output.innerHTML = "No numberz found!";
