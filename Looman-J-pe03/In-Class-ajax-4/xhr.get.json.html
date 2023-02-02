@@ -28,7 +28,7 @@
             xhr.onload = (e) => {
                 console.log(`In onload - HTTP Status Code = ${e.target.status}`);
                 const string = e.target.responseText;
-                
+
                 let json;
                 try{
                     json = JSON.parse(string);
@@ -51,7 +51,7 @@
                 `;
 
                 document.querySelector("#output").innerHTML = html;
-                document.querySelector("h2").innerHTML = json.appTitle;
+                document.querySelector("h2").innerHTML = json.appTitle || "Pet name finder";
             };
             xhr.onerror = e => console.log(`In onerror - HTTP Status Code = ${e.target.status}`);
             xhr.open("Get", url);
