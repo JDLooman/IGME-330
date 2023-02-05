@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <p id="output">Click button to load</p>
+    <script>
+        const colors = "red,green,blue";
+        const words = colors.split(",");
+        const html = words.map(w => `<li>${w}</li>`).join("");
+        document.querySelector("#output").innerHTML = html;
+    </script>
+</body>
+</html>
