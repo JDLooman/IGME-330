@@ -12,23 +12,25 @@
 	let divergence = 137.5;
 	let c = 2;
 	let petalSize = 2;
+    let fps = 60;
 
 	function init(){
 		ctx = canvas.getContext("2d");
 		canvas.width = canvasWidth;
 		canvas.height = canvasHeight;
 		ctx.fillRect(0,0,canvasWidth,canvasHeight);
-		loop();
+        setupUI();
+		loop();        
 	}
 
 	function loop(){
-    	setTimeout(loop,1000/60);
+    	setTimeout(loop,1000/fps);
 		// each frame draw a new dot
 		// `a` is the angle
 		// `r` is the radius from the center (e.g. "Pole") of the flower
 		// `c` is the "padding/spacing" between the dots
-		let a = n * dtr(divergence);
-		let r = c * Math.sqrt(n);
+		let a = n * dtr(divergence) * 2;
+		let r = c * Math.sqrt(n) / 2;
 		//console.log(a,r);
 
 		// now calculate the `x` and `y`
@@ -51,7 +53,7 @@
    		n++;
 		c += .01;
 		divergence += .005;
-		petalSize += .01;
+		petalSize += .01;        
 	}
 
 	// helpers
@@ -69,11 +71,42 @@
 		ctx.restore();
 	}
 
+    function setupUI(){
+        document.querySelector("#btn-restart").onclick = function (){
+            ctx.fillRect(0,0,canvasWidth,canvasHeight);
+            n = 0;
+	        divergence = 137.5;
+	        c = 2;
+	        petalSize = 2;
+        };
+        document.querySelector("#alpha-less").onclick = function (){
+            ctx.globalAlpha /= 5;
+        };
+        document.querySelector("#alpha-more").onclick = function (){
+            ctx.globalAlpha *= 5;
+        };
+    }
+
 	window.onload = init;
 	</script>
 </head>
 <body>
 <canvas id="canvas"></canvas>
-
+<div id="controls">
+	<button id="alpha-less">Less Opacity</button>
+    <button id="alpha-more">More Opacity</button>
+	<button id="btn-restart">Restart App</button>
+</div>
+<p>
+    About this app
+    <br>
+    - The restart button clears the canvas and resets all the variables to their original state.
+    <br>
+    - The Less opacity button decreases opacity by dividing current opacity by 5
+    <br>
+    - The More opacity button increases opacity by multiplying current opacity by 5
+    <br>
+    - Multiply 'a' value by 2 and divide 'r' value by 2
+</p>
 </body>
 </html>
