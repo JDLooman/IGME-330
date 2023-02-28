@@ -8,7 +8,7 @@
 
 	class CircleSprite{
         static type = "arc"; // demoing a static (class) variable here
-        constructor({x,y,radius,color}){
+        constructor({x=0,y=0,radius=10,color="white"} = {}){
             console.log(`${this.constructor.type} created`); // access static property (alternatively, CircleSprite.type)
             // YOU DO THIS - initialize .x, .y, .radius and .color properties
             // this.x = x;
@@ -73,6 +73,7 @@
             y:200,
             radius:30,
             color:"red"}));
+        sprites.push(new CircleSprite({}));//default circle
         console.log(sprites[0]);
         console.log(sprites[1]);
         loop();
