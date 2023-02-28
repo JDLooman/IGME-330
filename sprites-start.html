@@ -8,20 +8,20 @@
 
 	class CircleSprite{
         static type = "arc"; // demoing a static (class) variable here
-        constructor(x,y,radius,color){
+        constructor({x,y,radius,color}){
             console.log(`${this.constructor.type} created`); // access static property (alternatively, CircleSprite.type)
             // YOU DO THIS - initialize .x, .y, .radius and .color properties
             // this.x = x;
             // this.y = y;
             // this.radius = radius;
             // this.color = color;
-            Object.assign(this,[x,y,radius,color]);
+            Object.assign(this,{x,y,radius,color});
         }
         
         update(){
             // YOU DO THIS - increase the .x, and .y properties by 1
-            this[0]++;
-            this[1]++;
+            this.x++;
+            this.y++;
         }
         
         draw(ctx){
@@ -29,9 +29,9 @@
             // fill a circle - utilize the ctx argument, and the .x, .y, .radius and .color properties
             // don't forget about ctx.save() and ctx.restore()
             ctx.save();            
-            ctx.fillStyle = this[3];
+            ctx.fillStyle = this.color;
             ctx.beginPath();
-            ctx.arc(this[0], this[1], this[2], 0, Math.PI * 2);
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
             ctx.closePath();
             ctx.fill();
             ctx.restore();
@@ -47,19 +47,32 @@
 	const loop = () => {
         setTimeout(loop, 1000/60);
         ctx.fillRect(0, 0, canvasWidth, canvasHeight);
-        sprites[0].draw(ctx);
-        sprites[1].draw(ctx);
+        // sprites[0].draw(ctx);
+        // sprites[1].draw(ctx);
 
-        sprites[0].update();
-        sprites[1].update();
+        // sprites[0].update();
+        // sprites[1].update();
+
+        sprites.forEach(s => {
+            s.draw(ctx);
+            s.update();
+        });
 	}
 	
 	const init = () => {
         ctx = canvas.getContext("2d");
         canvas.width = canvasWidth;
         canvas.height = canvasHeight;
-        sprites.push(new CircleSprite(100,100,20,"green"));
-        sprites.push(new CircleSprite(100,200,30,"red"));
+        sprites.push(new CircleSprite({
+            x:100,
+            y:100,
+            radius:20,
+            color:"green"}));
+        sprites.push(new CircleSprite({
+            x:100,
+            y:200,
+            radius:30,
+            color:"red"}));
         console.log(sprites[0]);
         console.log(sprites[1]);
         loop();
