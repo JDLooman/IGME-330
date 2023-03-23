@@ -1,0 +1,4 @@
+ - I added the treble and base nodes, whcih change the pitch of the music.
+ - The Sprites class and MoveSprites class both draw their respective sprites on the screen and update them based on what the music is doing
+ - The data in the JSOn file is the app title, song name and file location, and then file location of all different png sprites I used throughout the assignment
+ - The aestetics of the app was improved to have many moving/updating png pictures of muppets making it look as though they are putting on a show for you. For this section I believe I earned at least 5-10 percent.

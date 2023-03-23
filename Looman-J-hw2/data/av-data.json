@@ -1,0 +1,17 @@
+{
+    "title": "Muppets Performence",
+    "track":
+        {
+            "name": "The Muppets Song",
+            "path": "media/Muppets.mp3"
+        },
+    "images":
+        {
+            "stage": "./media/stage.png",
+            "fozzie": "./media/fozzie bear.png",
+            "kermit": "./media/kermit.png",
+            "beaker": "./media/beaker.png",
+            "piggy": "./media/piggy.png",
+            "gonzo": "./media/gonzo.png"
+        }
+}
